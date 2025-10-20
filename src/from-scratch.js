@@ -1,31 +1,58 @@
-const coolGreeting = () => {
+const coolGreeting = (person) => {
+  return person.isCool
+    ? `What is UP ${String(person.name).toUpperCase()}? How you been doin'?`
+    : `Greetings ${person.name}, how have you been lately?`;
 };
 
-const haveBirthday = () => {
+const haveBirthday = (person) => {
+  person.age += 1;
 };
 
-const becomeSecretAgent = () => {
+const becomeSecretAgent = (person, spyHandle) => {
+  delete person.name;
+  person.spyHandle = spyHandle;
 };
 
-const carMaker = () => {
+const carMaker = (name, maker, year) => {
+  return {
+    name,
+    maker,
+    year,
+    needsOilChange: false,
+  };
 };
 
-const weAreNotFriends = () => {
+const weAreNotFriends = (person) => {
+  return person.friends.pop();
 };
 
-const listHobbies = () => {
+const listHobbies = (person) => {
+  for (const hobby of person.hobbies) {
+    console.log(`${person.name} likes ${hobby}.`);
+  }
 };
 
-const getNextOpponent = () => {
+const getNextOpponent = (team) => {
+  const first = team.matches && team.matches[0];
+  return first ? first.teamName : null;
 };
 
-const listAllKeys = () => {
+const listAllKeys = (obj) => {
+  return Object.keys(obj);
 };
 
-const listAllValues = () => {
+const listAllValues = (obj) => {
+  return Object.values(obj);
 };
 
-const convertToMatrix = () => {
+const convertToMatrix = (arr) => {
+  if (!arr || arr.length === 0) return [];
+  const keys = Object.keys(arr[0]);
+  const matrix = [keys];
+  for (const item of arr) {
+    matrix.push(keys.map((k) => item[k]));
+  }
+  return matrix;
 };
 
 module.exports = {
